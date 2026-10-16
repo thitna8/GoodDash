@@ -1,0 +1,18 @@
+{
+  "name": "gooddash",
+  "private": true,
+  "version": "0.1.0",
+  "description": "On-demand everyday-goods delivery platform — monorepo workspace root.",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev:backend": "npm run start:dev --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "build:backend": "npm run build --workspace=backend",
+    "build:frontend": "npm run build --workspace=frontend",
+    "lint": "npm run lint --workspace=backend && npm run lint --workspace=frontend",
+    "test:backend": "npm run test --workspace=backend"
+  }
+}
