@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: gooddash-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: gooddash
+      POSTGRES_PASSWORD: gooddash_dev_password
+      POSTGRES_DB: gooddash
+    ports:
+      - "5432:5432"
+    volumes:
+      - gooddash_pgdata:/var/lib/postgresql/data
+
+volumes:
+  gooddash_pgdata:
