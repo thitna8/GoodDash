@@ -11,6 +11,10 @@ export class UsersService {
     return this.prisma.user.findUnique({ where: { email } });
   }
 
+  async findById(id: string) {
+    return this.prisma.user.findUnique({ where: { id } });
+  }
+
   async create(email: string, password: string, fullName: string, phone: string) {
     const existing = await this.findByEmail(email);
     if (existing) {
@@ -27,6 +31,13 @@ export class UsersService {
         phone,
         role: Role.CUSTOMER,
       },
+    });
+  }
+
+  async setCurrentRefreshTokenHash(userId: string, hash: string | null) {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: { currentHashedRefreshToken: hash },
     });
   }
 }
