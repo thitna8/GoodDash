@@ -84,14 +84,15 @@ enum RefundStatus {
 }
 
 model User {
-  id           String   @id @default(uuid())
-  fullName     String
-  phone        String   @unique
-  email        String   @unique
-  passwordHash String
-  role         Role
-  isActive     Boolean  @default(true)
-  createdAt    DateTime @default(now())
+  id                        String   @id @default(uuid())
+  fullName                  String
+  phone                     String   @unique
+  email                     String   @unique
+  passwordHash              String
+  currentHashedRefreshToken String?
+  role                      Role
+  isActive                  Boolean  @default(true)
+  createdAt                 DateTime @default(now())
 
   addresses     Address[]
   shop          Shop?
